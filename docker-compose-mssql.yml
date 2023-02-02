@@ -1,0 +1,16 @@
+version: "3.1"
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql2019
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: ADD-PASSWORD-HERE # edit passowrd 
+      MSSQL_PID: Developer # mssql edition
+    volumes:
+      - mssql2019:/var/opt/mssql
+    restart: unless-stopped
+volumes:
+  mssql2019:
