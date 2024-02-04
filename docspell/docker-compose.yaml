@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  consumedir:
+    volumes:
+      - importdocs:/opt/docs
+
+volumes:
+  docspell-postgres_data:
+    driver: local
+    driver_opts:
+      type: nfs4
+      o: addr=192.168.x.y,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14
+      device: ":/mnt/FreeNas/docker_vol1/docspell/postgres_data"
+
+  docspell-solr_data:
+    driver: local
+    driver_opts:
+      type: nfs4
+      o: addr=192.168.x.y,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14
+      device: ":/mnt/FreeNas/docker_vol1/docspell/solr_data"
+
+  importdocs:
+    driver: local
+    driver_opts:
+      type: nfs4
+      o: addr=192.168.x.y,rw,noatime,rsize=8192,wsize=8192,tcp,timeo=14
+      device: ":/mnt/FreeNas/archiv/gescannt/output"
